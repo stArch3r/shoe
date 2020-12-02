@@ -4,18 +4,18 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel frontend\models\ItemsSearch */
+/* @var $searchModel frontend\models\ProductsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Items';
+$this->title = 'Products';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="items-index">
+<div class="products-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Items', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Products', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -26,12 +26,20 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'productId',
-            'price',
-            'title',
-            'details',
-            'day',
-            //'category',
+            'id',
+            'userEmail:email',
+            'name',
+            'description:ntext',
+            'ikey',
+            //'amount',
+            //'quanity',
+            //'availablity',
+            //'productCondition',
+            //'brand',
+            //'stock',
+            //'image',
+            //'status',
+            //'createdAt',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

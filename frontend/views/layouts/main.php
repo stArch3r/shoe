@@ -16,6 +16,7 @@ AppAsset::register($this);
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
 <head>
+
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,8 +26,8 @@ AppAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
-<nav class="navbar nav-boot navbar-expand-lg fixed-top navbar-light bg-light navbar-fixed">
-  <a class="navbar-brand" href="#">Duka Prototype</a>
+<nav class="navbar nav-boot navbar-expand-lg fixed-top navbar-light bg-light navbar-fixed ">
+  <a class="navbar-brand " href="#"> <h5> Duka Prototype </h5> </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <i class="fa fa-bars"></i>
   </button>
@@ -34,7 +35,7 @@ AppAsset::register($this);
     <div class="collapse navbar-collapse pull-right" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="shoe/shoe/index.php"><h5 font-family: "sans-serif", style="color:#000000; mr-sm-0;">HOME</h5> <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="http://localhost/shoe/shoe/home"><h5 font-family: "sans-serif", style="color:#000000; mr-sm-0;">HOME</h5> <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="http://localhost/shoe/shoe/womens"><h5 font-family: "sans-serif;", style="color:#000000; mr-sm-0;">WOMEN'S</h5></a>
@@ -45,14 +46,19 @@ AppAsset::register($this);
       <li class="nav-item">
         <a class="nav-link" href="http://localhost/shoe/shoe/kids"><h5 font-family: "sans-serif", style="color:#000000; mr-sm-0;">KID'S</h5></a>
       </li>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="http://localhost/shoe/products"><h5 font-family: "sans-serif", style="color:#000000; mr-sm-0;">ADD</h5></a>
+      </li>
+
       <li class="nav-item">
   <a class="nav-link" href="sale.php"> <h5 font-family: "sans-serif", style="color:#FF0000; mr-sm-0;">SALE</h5> </a>
 </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><h5 font-family: "sans-serif", style="color:#000000; mr-sm-0">My-Account</h5></a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Gold</a>
-          <a class="dropdown-item" href="#">Silver</a>
+          <a class="dropdown-item" href=http://localhost/site/login">login</a>
+          <a class="dropdown-item" href=http://localhost/site/signup">signup</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Platinum</a>
         </div>

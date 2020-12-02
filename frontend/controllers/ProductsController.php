@@ -3,16 +3,17 @@
 namespace frontend\controllers;
 
 use Yii;
-use frontend\models\items;
-use frontend\models\ItemsSearch;
+use yii\web\UploadedFile;
+use frontend\models\Products;
+use frontend\models\ProductsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ItemsController implements the CRUD actions for items model.
+ * ProductsController implements the CRUD actions for Products model.
  */
-class ItemsController extends Controller
+class ProductsController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,12 +31,12 @@ class ItemsController extends Controller
     }
 
     /**
-     * Lists all items models.
+     * Lists all Products models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ItemsSearch();
+        $searchModel = new ProductsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +46,7 @@ class ItemsController extends Controller
     }
 
     /**
-     * Displays a single items model.
+     * Displays a single Products model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,16 +59,27 @@ class ItemsController extends Controller
     }
 
     /**
-     * Creates a new items model.
+     * Creates a new Products model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new items();
+        $model = new Products();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->productId]);
+        if ($model->load(Yii::$app->request->post()) ) {
+
+           $imageFile = UploadedFile::getInstance($model,'image');
+           if(isset($imageFile->size)) {
+              $imageFile->saveAs('uploads/'.$imageFile->baseName.'.' .$imageFile->extension);
+           }
+             $model->userEmail =Yii::$app->user->identity->email;
+             $model->ikey =time ().rand(1,100);
+             $model->image= $imageFile->baseName.'.' .$imageFile->extension;
+             $model->save(false);
+
+
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
@@ -76,7 +88,7 @@ class ItemsController extends Controller
     }
 
     /**
-     * Updates an existing items model.
+     * Updates an existing Products model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -87,7 +99,7 @@ class ItemsController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->productId]);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -96,7 +108,7 @@ class ItemsController extends Controller
     }
 
     /**
-     * Deletes an existing items model.
+     * Deletes an existing Products model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,15 +122,15 @@ class ItemsController extends Controller
     }
 
     /**
-     * Finds the items model based on its primary key value.
+     * Finds the Products model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return items the loaded model
+     * @return Products the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = items::findOne($id)) !== null) {
+        if (($model = Products::findOne($id)) !== null) {
             return $model;
         }
 

@@ -317,7 +317,7 @@ $this->title = 'My Yii Application';
         <div class="col-md-12 subscribe">
             <div class="row">
                 <div class="col-md-4"></div>
-              <div class="col-md-4 tex " style="justify:center;">
+              <div class="col-md-4 tex " style="align-content: center;">
                 <h1 style="text-align: center;" > Never miss a drop</h1>
                 <p>Recieve updates about new products and </p>
                 <p>promotions.</p>

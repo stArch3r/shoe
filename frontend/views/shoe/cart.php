@@ -26,8 +26,7 @@ $this->title = 'My Yii Application';
 </head>
 <body>
 
-  
-  <div class="container">
+  <div class="container" style="margin-top:130px;">
      <div class="card shopping-cart">
               <div class="card-header bg-dark text-light">
                   <i class="fa fa-shopping-cart" aria-hidden="true"></i>

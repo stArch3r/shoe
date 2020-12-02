@@ -2,7 +2,7 @@
 use yii\helpers\Html;
 use yii\bootstrap4;
 use frontend\models\Products;
-$products=Products::find()->where(['status'=>1])->all();
+$products = Products::find()->where(['status'=>1])->all();
 
 /* @var $this yii\web\View */
 
@@ -43,12 +43,15 @@ $this->title = 'My Yii Application';
            <img class="card-img-top img-fluid " src="../uploads/<?= $product->image?>"  alt="">
            
          </div>
-         <h4 class="card-title">Product Name</h4>
-         <p class="card-text">Ksh.2000</p>
-         <?= Html::a('add to cart', ['shoes/create'],['class'=>'btn btn-danger mt-3']); ?>
-       </div>
+         <h4 class="card-title"><?=$product->name?>></h4>
+         <p class="card-text"><?=$product->amount?></p>
+         <form action="<?Url::to(['shoe/shoe/cart'])?>" method="post">
+         <input name="pid" value="<?=$product->id?>">
+         <button class="btn btn-danger mt-3 add-to-cart"> ADD to</button>
+         </form>
+      
        <?php } ?>
-     
+  
 
 
 

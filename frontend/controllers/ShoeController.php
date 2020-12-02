@@ -1,9 +1,11 @@
 <?php
-
+use frontend\models\Products;
 namespace frontend\controllers;
 
 class ShoeController extends \yii\web\Controller
 {
+    
+
     public function actionIndex()
     {
         return $this->render('index');
@@ -27,9 +29,18 @@ class ShoeController extends \yii\web\Controller
      {
          return $this->render('sale');
      }
-    public function actionCart()
-    {
-        return $this->render('cart');
+     public function actionCart(){
+        $session = Yii::$app->session;
+        $cart = array();
+        $cart[] = $session['cart'];
+        $check_pid_post = Yii::$app->request->post('pid');
+          if(isset($check_pid_post)){
+              $cart[]= $check_pid_post; //product to cart
+              $session['cart'] = $cart;
+          }
+     
+        $carts = Products::find()->where(['id'=>$session['cart']])->all();
+        return $this->render('cart',['carts'=>$carts]);
     }
     
     public function actionCheckout()

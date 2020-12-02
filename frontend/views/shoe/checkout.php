@@ -93,6 +93,6 @@ $this->title = 'My Yii Application';
     </div>
   </div>
 </div>
-
+</div>
 </body>
 </html>

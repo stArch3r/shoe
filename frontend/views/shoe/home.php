@@ -28,7 +28,7 @@ $this->title = 'My Yii Application';
    <div class=" col-lg-12 ">
       <div class="row ">
           <div class="col-lg-8 " style="margin-top: 88px;">
-          <img src="assets/image/red.jpg" style="width:50%;" class="built" >
+          <img src="../assets/image/red.jpg" style="width:50%;" class="built" >
           </div>
            <div class="explore col-lg-4" style="margin-top: 88px;" >
             <h2 font-family:"Porter Sans Block" class="fight" > <strong>BUILT FOR </p> FIGHT </strong> </h2>
@@ -317,15 +317,16 @@ $this->title = 'My Yii Application';
         <div class="col-md-12 subscribe">
             <div class="row">
                 <div class="col-md-4"></div>
-              <div class="col-md-4 tex " style="align-content: center;">
+              <div class="col-md-4 tex ">
                 <h1 style="text-align: center;" > Never miss a drop</h1>
-                <p>Recieve updates about new products and </p>
-                <p>promotions.</p>
-                <p><button type="button" class="btn btn-outline-dark btn-lg">Join Mailing List</button></p></div>
+                <p   style="text-align: center;" >Recieve updates about new products and </p>
+                <p style="text-align: center;">promotions.</p>
+                <p style="text-align: center;"><button type="button" class="btn btn-outline-dark btn-lg">Join Mailing List</button></p></div>
               <div class="col-md-4"></div>
         
         </div>
         </div>
+    </div>
     </div>
       <!--end-->
 

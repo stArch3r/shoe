@@ -19,7 +19,7 @@ class AppAsset extends AssetBundle
         
     ];
     public $js = [
-    
+    'js/custom.js',
     
 
     ];

@@ -3,7 +3,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\bootstrap4;
 use frontend\models\Products;
-$products = Products::find()->where(['status'=>1])->all();
+$products = Products::find()->where(['category'=>'mens'])->all();
 
 /* @var $this yii\web\View */
 

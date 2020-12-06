@@ -18,7 +18,7 @@ class ProductsSearch extends Products
     {
         return [
             [['id', 'quanity', 'stock', 'status'], 'integer'],
-            [['userEmail', 'name', 'description', 'ikey', 'amount', 'availablity', 'productCondition', 'brand', 'image', 'createdAt'], 'safe'],
+            [['userEmail', 'name', 'description', 'ikey', 'amount', 'availablity', 'productCondition', 'brand', 'image', 'category', 'createdAt'], 'safe'],
         ];
     }
 
@@ -73,7 +73,8 @@ class ProductsSearch extends Products
             ->andFilterWhere(['like', 'availablity', $this->availablity])
             ->andFilterWhere(['like', 'productCondition', $this->productCondition])
             ->andFilterWhere(['like', 'brand', $this->brand])
-            ->andFilterWhere(['like', 'image', $this->image]);
+            ->andFilterWhere(['like', 'image', $this->image])
+            ->andFilterWhere(['like', 'category', $this->category]);
 
         return $dataProvider;
     }

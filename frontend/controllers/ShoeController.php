@@ -1,11 +1,15 @@
 <?php
-use frontend\models\Products;
+
+
 namespace frontend\controllers;
+use Yii;
+use frontend\models\Products;
 
 class ShoeController extends \yii\web\Controller
 {
-    
+    public $enableCsrfValidation = false;
 
+    
     public function actionIndex()
     {
         return $this->render('index');
@@ -24,6 +28,11 @@ class ShoeController extends \yii\web\Controller
     {
         return $this->render('womens');
     
+    }
+
+    public function actionMore()
+    {
+        return $this->render('more');
     }
      public function actionSale()
      {

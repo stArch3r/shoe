@@ -20,6 +20,7 @@ use Yii;
  * @property int $stock
  * @property string $image
  * @property int $status
+ * @property string $category
  * @property string $createdAt
  */
 class Products extends \yii\db\ActiveRecord
@@ -38,7 +39,7 @@ class Products extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'description', 'ikey', 'amount', 'availablity', 'productCondition', 'brand', 'stock', 'image', 'status', 'createdAt'], 'required'],
+            [['name', 'description', 'ikey', 'amount', 'availablity', 'productCondition', 'brand', 'stock', 'image', 'status', 'category', 'createdAt'], 'required'],
             [['description'], 'string'],
             [['quanity', 'stock', 'status'], 'integer'],
             [['createdAt','userEmail'], 'safe'],
@@ -68,6 +69,7 @@ class Products extends \yii\db\ActiveRecord
             'stock' => 'Stock',
             'image' => 'Image',
             'status' => 'Status',
+            'category'=> 'category',
             'createdAt' => 'Created At',
         ];
     }

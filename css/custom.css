@@ -289,6 +289,10 @@ footer {
 	  width: 71px;
 	  height: 200px ;
   }
-
+  .monospaced { font-family: 'Ubuntu Mono', monospaced ; }
+  .add-to-cart .btn-qty {
+	width: 52px;
+	height: 46px;
+  }
   
 	

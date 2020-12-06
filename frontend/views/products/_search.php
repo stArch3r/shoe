@@ -41,6 +41,8 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'status') ?>
 
+    <?php // echo $form->field($model, 'category') ?>
+
     <?php // echo $form->field($model, 'createdAt') ?>
 
     <div class="form-group">

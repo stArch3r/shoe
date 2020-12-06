@@ -11,13 +11,13 @@ use yii\widgets\ActiveForm;
 <div class="products-form" style="margin-top:20px;">
 
     <?php $form = ActiveForm::begin(['options'=>['enctype'=>'multipart/form-data']]); ?>
-
+  
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-
+    
 
     <?= $form->field($model, 'amount')->textInput(['maxlength' => true]) ?>
 
@@ -35,6 +35,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'status')->dropDownList([1=>'active',0=>'inactive']) ?>
 
+
+    <?= $form->field($model, 'category')->dropDownList([ 'mens' => 'Mens', 'womens' => 'Womens', 'kids' => 'Kids', 'sale' => 'Sale', ], ['prompt' => '']) ?>
 
 
     <div class="form-group">

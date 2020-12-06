@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\bootstrap4;
 use frontend\models\Products;
 $products = Products::find()->where(['status'=>1])->all();
@@ -45,17 +46,20 @@ $this->title = 'My Yii Application';
          </div>
          <h4 class="card-title"><?=$product->name?>></h4>
          <p class="card-text"><?=$product->amount?></p>
-         <form action="<?Url::to(['shoe/shoe/cart'])?>" method="post">
+         <?= Html::a('view product', ['/shoe/more']); ?>
+         <form action="<?=Url::to(['/shoe/cart'])?>" method="post">
          <input name="pid" value="<?=$product->id?>">
          <button class="btn btn-danger mt-3 add-to-cart"> ADD to</button>
          </form>
+         </div>
       
        <?php } ?>
   
 
 
 
-  
+  </div>
+  </div>
      
 </div>
 

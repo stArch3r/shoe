@@ -60,6 +60,9 @@ class ShoeController extends \yii\web\Controller
     {
         return $this->render('home');
     }
-    
+    public function actionPopup()
+    {
+        return $this->renderAjax('popup');
+    }
 
 }

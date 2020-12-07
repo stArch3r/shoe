@@ -1,10 +1,13 @@
 <?php
 use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
 use frontend\models\Products;
+use frontend\models\Cart;
 
+$products = ArrayHelper::map(cart::find()->all(), 'quantity', 'totalPrice');
 $val=Products::find()->where(['status'=>1])->all();
-
-
+$cartTotal=Cart::find()->asArray()->all();
+$totalPrice=Cart::find()->JoinWith('shoe')->sum('amount');
 /* @var $this yii\web\View */
 
 $this->title = 'My Yii Application';
@@ -42,6 +45,8 @@ $this->title = 'My Yii Application';
                       <!-- PRODUCT -->
                       <div class="row">
                       <?php foreach($carts as $cart)  { ?>
+                    
+            
                           <div class="col-12 col-sm-12 col-md-2 text-center ">
                                   <img class="img-responsive" src=" ../uploads/<?= $cart->image?>"     alt="prewiew" width="120" height="80">
                           </div>
@@ -92,7 +97,7 @@ $this->title = 'My Yii Application';
                   <div class="pull-right" style="margin: 10px">
                       <a href="http://localhost/shoe/shoe/checkout" class="btn btn-success pull-right">Checkout</a>
                       <div class="pull-right" style="margin: 5px">
-                          Total price: <b id="total-price"></b>
+                          Total price:<b> <?= $totalPrice?></b>
                       </div>
                   </div>
               </div>

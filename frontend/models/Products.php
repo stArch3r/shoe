@@ -22,6 +22,8 @@ use Yii;
  * @property int $status
  * @property string $category
  * @property string $createdAt
+ *
+ * @property Cart $cart
  */
 class Products extends \yii\db\ActiveRecord
 {
@@ -39,14 +41,13 @@ class Products extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'description', 'ikey', 'amount', 'availablity', 'productCondition', 'brand', 'stock', 'image', 'status', 'category', 'createdAt'], 'required'],
-            [['description'], 'string'],
+            [['userEmail', 'name', 'description', 'ikey', 'amount', 'availablity', 'productCondition', 'brand', 'stock', 'image', 'status', 'category', 'createdAt'], 'required'],
+            [['description', 'category'], 'string'],
             [['quanity', 'stock', 'status'], 'integer'],
-            [['createdAt','userEmail'], 'safe'],
+            [['createdAt'], 'safe'],
             [['userEmail', 'name', 'image'], 'string', 'max' => 255],
             [['ikey', 'amount', 'availablity'], 'string', 'max' => 50],
             [['productCondition', 'brand'], 'string', 'max' => 100],
-            [['image'],'file','extensions'=>'jpg,png,gif','skipOnEmpty'=>false]
         ];
     }
 
@@ -69,8 +70,18 @@ class Products extends \yii\db\ActiveRecord
             'stock' => 'Stock',
             'image' => 'Image',
             'status' => 'Status',
-            'category'=> 'category',
+            'category' => 'Category',
             'createdAt' => 'Created At',
         ];
+    }
+
+    /**
+     * Gets query for [[Cart]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCart()
+    {
+        return $this->hasOne(Cart::className(), ['shoeId' => 'id']);
     }
 }

@@ -49,9 +49,10 @@ $this->title = 'My Yii Application';
          <?= Html::a('view product', ['/shoe/more']); ?>
          <form action="<?=Url::to(['/shoe/cart'])?>" method="post">
          <input name="pid" value="<?=$product->id?>">
-         <button class="btn btn-danger mt-3 add-to-cart"> ADD to</button>
+         <button class="btn btn-danger mt-3 add-to-cart popup"> ADD to</button>
          </form>
          </div>
+        
       
        <?php } ?>
   
@@ -76,3 +77,13 @@ $this->title = 'My Yii Application';
 </body>
 </html>
 <?php $this->endPage() ?>
+
+<?php
+                    Modal::begin([
+                        'header'=>'<h4>Borrow book</h4>',
+                        'id'=>'popup',
+                        'size'=>'modal-lg',
+                        ]);
+                    echo "<div id='popupContent'></div>";
+                    Modal::end();
+                  ?>

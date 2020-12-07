@@ -42,32 +42,33 @@ $this->title = 'My Yii Application';
                       <!-- PRODUCT -->
                       <div class="row">
                       <?php foreach($carts as $cart)  { ?>
-                          <div class="col-12 col-sm-12 col-md-2 text-center cart">
+                          <div class="col-12 col-sm-12 col-md-2 text-center ">
                                   <img class="img-responsive" src=" ../uploads/<?= $cart->image?>"     alt="prewiew" width="120" height="80">
                           </div>
                           <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
-                              <h4 class="product-name"><strong> Price</strong></h4>
+                              <h4 class="product-name"><strong><?= $cart->name?></strong></h4>
                               <h4>
-                                  <small>Product description</small>
+                                  <small><?= $cart->description?></small>
                               </h4>
                           </div>
                           
                          
-                          <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
-                              <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
-                                  <h6><strong><?=$cart->amount?> <span class="text-muted">x</span></strong></h6>
+                          <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row item-detail">
+                              <div class="col-3 col-sm-3 col-md-6 text-md-right prices" style="padding-top: 5px" >
+                                  <h6><strong id="product"><?=$cart->amount?>  <span class="text-muted">x</span></strong></h6>
                               </div>
                               <div class="col-4 col-sm-4 col-md-4">
                                   <div class="quantity">
-                                      <input type="button" value="+" class="plus">
-                                      <input type="number" step="1" max="99" min="1" value="1" title="Qty" class="qty"
-                                             size="4">
-                                      <input type="button" value="-" class="minus">
+                                      <input type="button" value="+" class="plus" class="add">
+                                      <input type="number" step="1" max="99" min="1" value="1" title="Qty" class="qty" id="quantity"  onchange="quantityChange(this)" > 
+                                            
+               
+                                      <input type="button" value="-" class="minus" >
                                   </div>
                               </div>
                               <div class="col-2 col-sm-2 col-md-2 text-right">
                                   <button type="button" class="btn btn-outline-danger btn-xs">
-                                      <i class="fa fa-trash" aria-hidden="true"></i>
+                                      <i class="fa fa-trash" id="sub" aria-hidden="true"></i>
                                   </button>
                               </div>
                           </div>
@@ -91,7 +92,7 @@ $this->title = 'My Yii Application';
                   <div class="pull-right" style="margin: 10px">
                       <a href="http://localhost/shoe/shoe/checkout" class="btn btn-success pull-right">Checkout</a>
                       <div class="pull-right" style="margin: 5px">
-                          Total price: <b>7000 KES</b>
+                          Total price: <b id="total-price"></b>
                       </div>
                   </div>
               </div>

@@ -1,9 +1,16 @@
 <?php
 use yii\helpers\Html;
 use yii\helpers\Url;
-use yii\bootstrap4;
+use frontend\models\Cart;
 use frontend\models\Products;
+use yii\helpers\ArrayHelper;
+use yii\bootstrap4\Modal;
+
+
+
+
 $products = Products::find()->where(['category'=>'mens'])->all();
+$shoe=Cart::find()->JoinWith('shoe')->all();
 
 /* @var $this yii\web\View */
 
@@ -46,11 +53,8 @@ $this->title = 'My Yii Application';
          </div>
          <h4 class="card-title"><?=$product->name?>></h4>
          <p class="card-text"><?=$product->amount?></p>
-         <?= Html::a('view product', ['/shoe/more']); ?>
-         <form action="<?=Url::to(['/shoe/cart'])?>" method="post">
-         <input name="pid" value="<?=$product->id?>">
-         <button class="btn btn-danger mt-3 add-to-cart popup"> ADD to</button>
-         </form>
+         <a href="<?= Url::to(['/cart', 'shoeId'=>$product->id])?>" class="btn btn-primary" role="button">Add to Cart</a>
+        <button class="btn btn-danger popup">pop</button>
          </div>
         
       
@@ -79,11 +83,11 @@ $this->title = 'My Yii Application';
 <?php $this->endPage() ?>
 
 <?php
-                    Modal::begin([
-                        'header'=>'<h4>Borrow book</h4>',
-                        'id'=>'popup',
-                        'size'=>'modal-lg',
-                        ]);
-                    echo "<div id='popupContent'></div>";
-                    Modal::end();
-                  ?>
+Modal::begin([
+  'title'=>'<h4>Add</h4>',
+  'id'=>'popup',
+  'size'=>'modal-lg'
+  ]);
+echo "<div id='popupContent'></div>";
+Modal::end();
+?>

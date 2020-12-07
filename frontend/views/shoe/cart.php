@@ -97,7 +97,7 @@ $this->title = 'My Yii Application';
                   <div class="pull-right" style="margin: 10px">
                       <a href="http://localhost/shoe/shoe/checkout" class="btn btn-success pull-right">Checkout</a>
                       <div class="pull-right" style="margin: 5px">
-                          Total price:<b> <?= $totalPrice?></b>
+                          Total price:<b><?= $cart->amount?></b>
                       </div>
                   </div>
               </div>

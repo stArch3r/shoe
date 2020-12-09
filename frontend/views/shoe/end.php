@@ -6,7 +6,7 @@ use frontend\models\Products;
 use yii\helpers\ArrayHelper;
 use yii\bootstrap4\Modal;
 
-
+$val=Products::find()->where(['status'=>1])->all();
 
 
 $products = Products::find()->where(['category'=>'mens'])->all();
@@ -38,7 +38,7 @@ $this->title = 'My Yii Application';
 <body>
 <div class="jumbotron text-center">
   <h1 class="display-3">Thank You!</h1>
-  <p class="lead"><strong>Please check your email</strong> your order ID 3445 has been confirmed check email for more information</p>
+  <p class="lead"><strong>Please check your email</strong> your order ID <?=$val->ikey?> has been confirmed check email for more information</p>
   <hr>
   <p>
     Having trouble? <a href="">Contact us</a>

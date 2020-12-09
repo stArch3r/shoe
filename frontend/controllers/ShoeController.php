@@ -60,9 +60,47 @@ class ShoeController extends \yii\web\Controller
     {
         return $this->render('home');
     }
-    public function actionPopup()
+    public function actionPopup($shoeId)
     {
-        return $this->renderAjax('popup');
+        $model = new \frontend\models\Cart();
+
+        if ($model->load(Yii::$app->request->post())) {
+            
+            $model->save();
+        return $this->redirect(['shoe/cart']);
+        }
+    
+        return $this->renderAjax('popup', [
+            'model' => $model,
+            'shoeId'=> $shoeId,
+            
+        ]);
+       
     }
+    
+public function actionKen($shoeId)
+{
+    $model = new \frontend\models\Cart();
+
+    if ($model->load(Yii::$app->request->post())) {
+        
+        $model->save();
+    return $this->redirect(['shoe/cart']);
+    }
+
+    return $this->render('ken', [
+        'model' => $model,
+        'shoeId'=> $shoeId,
+        
+    ]);
+}
+public function actionMpesa()
+{
+    return $this->renderAjax('mpesa');
+}
+public function actionEnd()
+{
+    return $this->render('end');
+}
 
 }

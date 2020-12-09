@@ -9,9 +9,6 @@ use Yii;
  *
  * @property int $cartId
  * @property int|null $shoeId
- * @property int|null $imagePath
- * @property int $quantity
- * @property int $totalPrice
  *
  * @property Products $shoe
  */
@@ -31,10 +28,8 @@ class Cart extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['shoeId', 'imagePath', 'quantity', 'totalPrice'], 'integer'],
-            [['quantity', 'totalPrice'], 'required'],
+            [['shoeId'], 'integer'],
             [['shoeId'], 'unique'],
-            [['imagePath'], 'unique'],
             [['shoeId'], 'exist', 'skipOnError' => true, 'targetClass' => Products::className(), 'targetAttribute' => ['shoeId' => 'id']],
         ];
     }
@@ -47,9 +42,6 @@ class Cart extends \yii\db\ActiveRecord
         return [
             'cartId' => 'Cart ID',
             'shoeId' => 'Shoe ID',
-            'imagePath' => 'Image Path',
-            'quantity' => 'Quantity',
-            'totalPrice' => 'Total Price',
         ];
     }
 

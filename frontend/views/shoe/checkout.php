@@ -1,98 +1,95 @@
 <?php
-use yii\helpers\Html;
-use yii\bootstrap4;
+use frontend\models\Products;
+use common\models\User;
+use yii\bootstrap4\Modal;
+use frontend\models\Cart;
 
-
-/* @var $this yii\web\View */
-
-$this->title = 'My Yii Application';
-?><!DOCTYPE html>
-<html>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="css/checkout.css">
-
-</head>
+$cartPrice = Products::find()->sum('amount');
+$malindi=Cart::find()->JoinWith('shoe')->sum('amount');
+?>
+<!DOCTYPE html><html lang="en">
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="../css/checkout.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title></title>
+    </head>
 <body>
-
-<h2>My-duka</h2>
-<p> 14 day return policy, check terms and condtions</p>
-<div class="row">
-  <div class="col-75">
-    <div class="container">
-      <form action="/action_page.php">
-      
+    
+  
+    <div class="container-fluid carrt">
+    <h4 class="d-flex justify-content-center">Check Out</h4>
+    <div class="row">
+      <div class="col-md-12">
         <div class="row">
-          <div class="col-50">
-            <h3>Billing Address</h3>
-            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-            <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
-            <label for="email"><i class="fa fa-envelope"></i> Email</label>
-            <input type="text" id="email" name="email" placeholder="john@example.com">
-            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-            <input type="text" id="adr" name="address" placeholder="kiambu road ">
-            <label for="city"><i class="fa fa-institution"></i> City</label>
-            <input type="text" id="city" name="city" placeholder="Nairobi">
-
-            <div class="row">
-              <div class="col-50">
-                <label for="state">country</label>
-                <input type="text" id="country" name="country" placeholder="Kenya">
-              </div>
-              <div class="col-50">
-                <label for="postal code">postal code</label>
-                <input type="text" id="postal code" name="postal code" placeholder="10001">
-              </div>
-            </div>
-          </div>
-
-          <div class="col-50">
-            <h3>Payment</h3>
-            <label for="fname">Accepted Cards</label>
-            <div class="icon-container">
-              <i class="fa fa-cc-visa" style="color:navy;"></i>
-              <i class="fa fa-cc-amex" style="color:blue;"></i>
-              <i class="fa fa-cc-mastercard" style="color:red;"></i>
-              <i class="fa fa-cc-discover" style="color:orange;"></i>
-            </div>
-            <label for="cname">Name on Card</label>
-            <input type="text" id="cname" name="cardname" placeholder="John More Doe">
-            <label for="ccnum"> card number</label>
-            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
-            <label for="expmonth">Exp Month</label>
-            <input type="text" id="expmonth" name="expmonth" placeholder="September">
-            <div class="row">
-              <div class="col-50">
-                <label for="expyear">Exp Year</label>
-                <input type="text" id="expyear" name="expyear" placeholder="2018">
-              </div>
-              <div class="col-50">
-                <label for="cvv">CVV</label>
-                <input type="text" id="cvv" name="cvv" placeholder="352">
-              </div>
-            </div>
-          </div>
-          
-        </div>
-        <label>
-          <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+          <div class="col-md-8 shadow-lg p-3 mb-5 bg-white rounded shopp">
+ <h5>Billing Details</h5>
+ <form>
+    <div class="form-group">
+      <label for="exampleFormControlInput1"></label>
+      <?php Yii::$app->user->identity->username ?>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="<?= Yii::$app->user->identity->email ?>">
+    </div>
+    <div class="form-check">
+    <button class="btn btn-success  mpesa  "> mpesa </button>
+      </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+        <i class="far fa-credit-card"></i><label class="form-check-label" for="exampleRadios1">
+          Credit Card
         </label>
-        <input type="submit" value="Continue to checkout" class="btn">
-      </form>
+      </div>
+     
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Card Number</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+      </div>
+                
+  </form>
+  
+             
+           </div>
+           
+           <div class="col-md-4 ">
+            <div class="card shadow-lg p-3 mb-5 bg-white rounded " style="width: 18rem;">
+                <button onclick="window.location.href='shop';" class="btn btn-dark btn-lg btn-block rounded-0">Continue Shopping</button>
+                <div class="card-header border-bottom">
+                  Order Summary
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                   <!-- <p> Sub Total:</p>    
+                   <p>Tax:</p> -->
+                  <h5>Total: Ksh<?=$malindi?>
+                  </h5>
+                  </div>
+                  <div class="col-md-6">
+                    <!-- <p></p>
+                    <p> </span></p> -->
+                    <p></p>
+                  </div>
+                </div>
+                 
+              
+                </div>
+               
+             
+        </div>
+        </div>
+        </div>
     </div>
-  </div>
-  <div class="col-25">
-    <div class="container">
-      <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
-      <p><a href="#">Product 1</a> <span class="price">$15</span></p>
-      <p><a href="#">Product 2</a> <span class="price">$5</span></p>
-      <p><a href="#">Product 3</a> <span class="price">$8</span></p>
-      <p><a href="#">Product 4</a> <span class="price">$2</span></p>
-      <hr>
-      <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
     </div>
-  </div>
-</div>
-</div>
-</body>
-</html>
+    <?php
+Modal::begin([
+  'title'=>'<h4>Add</h4>',
+  'id'=>'mpesa',
+  'size'=>'modal-lg'
+  ]);
+echo "<div id='mpesaContent'></div>";
+Modal::end();
+?>

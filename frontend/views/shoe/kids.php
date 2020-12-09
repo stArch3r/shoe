@@ -11,6 +11,11 @@ $products = Products::find()->where(['Category'=>'kids'])->all();
 <?php $this->beginPage() ?>
 
 <?php $this->head() ?>
+<html>
+
+<head> <title> <h1 font-family:"Tangerine"> my-Duka</h1>
+</title>
+<head>
 </head>
 <?php $this->beginBody() ?>
 <body> 

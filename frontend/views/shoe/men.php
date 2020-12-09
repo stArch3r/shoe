@@ -16,10 +16,12 @@ $shoe=Cart::find()->JoinWith('shoe')->all();
 
 $this->title = 'My Yii Application';
 ?>
+
 <?php $this->beginPage() ?>
 
 <?php $this->head() ?>
-</head>
+
+
 <?php $this->beginBody() ?>
 <body> 
   <div class="row">
@@ -53,8 +55,8 @@ $this->title = 'My Yii Application';
          </div>
          <h4 class="card-title"><?=$product->name?>></h4>
          <p class="card-text"><?=$product->amount?></p>
-         <a href="<?= Url::to(['/cart', 'shoeId'=>$product->id])?>" class="btn btn-primary" role="button">Add to Cart</a>
-        <button class="btn btn-danger popup">pop</button>
+         <a href="<?= Url::to(['shoe/ken', 'shoeId'=>$product->id,'totalPrice'=>$product->amount])?>" class="btn btn-primary" role="button">Add to Cart</a>
+        <button class="btn btn-danger popup  ">pop</button>
          </div>
         
       

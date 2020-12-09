@@ -3,10 +3,12 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\bootstrap4;
 use frontend\models\Products;
+use frontend\models\Cart;
 
 
 
-$shoe = Products::find()->where(['status'=>1])->all();
+$product = Products::find()->where(['category'=>'mens'])->all();
+$shoe=Cart::find()->JoinWith('shoe')->all();
 
 /* @var $this yii\web\View */
 
@@ -22,6 +24,8 @@ $this->title = 'My Yii Application';
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true" class="white-text">&times;</span>
         </button>
+
+        <a href="<?= Url::to(['shoe/ken', 'shoeId'=>$product->id,'totalPrice'=>$product->amount])?>" class="btn btn-primary" role="button">Add to Cart</a>
       </div>
       <!--Body-->
       <div class="modal-body">

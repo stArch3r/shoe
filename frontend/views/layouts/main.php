@@ -20,13 +20,25 @@ AppAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/86c7034986.js" crossorigin="anonymous"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="css/custom.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
 <body>
 <?php $this->beginBody() ?>
-<nav class="navbar nav-boot navbar-expand-lg fixed-top navbar-light bg-light navbar-fixed ">
+<nav class="navbar nav-boot navbar-expand-lg fixed-top navbar-light bg-light navbar-fixed  " style="margin-bottom:100px;">
   <a class="navbar-brand " href="#"> <h5> Duka Prototype </h5> </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <i class="fa fa-bars"></i>
@@ -57,10 +69,10 @@ AppAsset::register($this);
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><h5 font-family: "sans-serif", style="color:#000000; mr-sm-0">My-Account</h5></a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href=http://localhost/site/login">login</a>
-          <a class="dropdown-item" href=http://localhost/site/signup">signup</a>
+          <a class="dropdown-item" href="http://localhost/shoe/site/login">login</a>
+          <a class="dropdown-item" href="http://localhost/shoe/site/signup">signup</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Platinum</a>
+          <a class="dropdown-item" href="http://localhost/shoe/site/logout"  >log out</a>
         </div>
       </li>
     </ul>

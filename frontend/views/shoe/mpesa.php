@@ -32,7 +32,7 @@ $this->title = 'My Yii Application';
             
             <p>Phone Number : +2509090945</p>
             <h5>Total: Ksh<?=$malindi?><br>
-            <button type="button" class="btn btn-info btn-md mt-3"><a href="http://localhost/shoe/shoe/end"> Proceed</button></a>
+            <button type="button" class="btn btn-info btn-md mt-3"><a href="http://localhost/shoe/checkout/create"> Proceed</button></a>
           </div>
         </div>
       </div>

@@ -45,7 +45,7 @@ class SiteController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['post'],
+                    'logout' => ['get'],
                 ],
             ],
         ];
@@ -151,6 +151,7 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+   
 
     /**
      * Signs user up.

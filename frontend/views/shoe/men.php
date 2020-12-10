@@ -56,7 +56,7 @@ $this->title = 'My Yii Application';
          <h4 class="card-title"><?=$product->name?>></h4>
          <p class="card-text"><?=$product->amount?></p>
          <a href="<?= Url::to(['shoe/ken', 'shoeId'=>$product->id,'totalPrice'=>$product->amount])?>" class="btn btn-primary ken" role="button">Add to Cart</a>
-        <button class="btn btn-danger ken  ">pop</button>
+        
          </div>
         
       
@@ -67,9 +67,9 @@ $this->title = 'My Yii Application';
 
   </div>
   </div>
-     
+     </div>
 </div>
-
+</div>
   </div>
         
     </div>

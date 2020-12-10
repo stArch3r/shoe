@@ -55,7 +55,20 @@ class ShoeController extends \yii\web\Controller
     public function actionCheckout()
     {
         return $this->render('checkout');
+
     }
+   public function actionSendEmail()
+   {
+       Yii::$app->mailer->compose()
+       ->setTo('fc9e9b07c3-1910e9@inbox.mailtrap.io')
+       ->setFfrom('fc9e9b07c3-1910e9@inbox.mailtrap.io')
+       ->setSubject('order confirmation')
+       ->setTextBody('this mail confirms your order .kindly find attached invoice below ')
+       ->send();
+   }
+
+
+
     public function actionHome()
     {
         return $this->render('home');
@@ -88,7 +101,7 @@ public function actionKen($shoeId)
     return $this->redirect(['shoe/cart']);
     }
 
-    return $this->render('ken', [
+    return $this->renderAjax('ken', [
         'model' => $model,
         'shoeId'=> $shoeId,
         

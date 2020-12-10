@@ -4,20 +4,24 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model frontend\models\CartSearch */
+/* @var $model frontend\models\CheckoutSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="cart-search">
+<div class="checkout-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'cartId') ?>
+    <?= $form->field($model, 'productId') ?>
 
-    <?= $form->field($model, 'shoeId') ?>
+    <?= $form->field($model, 'userId') ?>
+
+    <?= $form->field($model, 'email') ?>
+
+    <?= $form->field($model, 'location') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

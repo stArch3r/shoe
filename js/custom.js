@@ -9,12 +9,12 @@ $(document).ready(function() {
         });
   })
 // });
-$('.popup').click(function (e) {
+$('.ken').click(function (e) {
     e.preventDefault();
     var shoeId = $(this).attr('val');
-    $.get('popup?shoeId='+shoeId, function (data) {
-        $('#popup').modal('show')
-            .find('#popupContent')
+    $.get('ken?shoeId='+shoeId, function (data) {
+        $('#ken').modal('show')
+            .find('#kenContent')
             .html(data);
     });
 });

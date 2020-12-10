@@ -37,13 +37,14 @@ $this->title = 'My Yii Application';
 <?php $this->beginBody() ?>
 <body>
 <div class="jumbotron text-center">
-  <h1 class="display-3">Thank You!</h1>
-  <p class="lead"><strong>Please check your email</strong> your order ID <?=$val->ikey?> has been confirmed check email for more information</p>
+  <h1 class="display-3"> success order confirmed </h1>
+  <p class="lead"><strong>Please check your email</strong> your order ID 56665 has been confirmed check email for more information</p>
   <hr>
   <p>
     Having trouble? <a href="">Contact us</a>
   </p>
+ 
   <p class="lead">
-    <a class="btn btn-primary btn-sm" href="https://bootstrapcreative.com/" role="button">Continue to homepage</a>
+    <a class="btn btn-primary btn-sm" href="shoe/home" role="button">back to shopping </a>
   </p>
 </div>

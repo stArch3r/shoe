@@ -55,8 +55,8 @@ $this->title = 'My Yii Application';
          </div>
          <h4 class="card-title"><?=$product->name?>></h4>
          <p class="card-text"><?=$product->amount?></p>
-         <a href="<?= Url::to(['shoe/ken', 'shoeId'=>$product->id,'totalPrice'=>$product->amount])?>" class="btn btn-primary" role="button">Add to Cart</a>
-        <button class="btn btn-danger popup  ">pop</button>
+         <a href="<?= Url::to(['shoe/ken', 'shoeId'=>$product->id,'totalPrice'=>$product->amount])?>" class="btn btn-primary ken" role="button">Add to Cart</a>
+        <button class="btn btn-danger ken  ">pop</button>
          </div>
         
       
@@ -87,9 +87,9 @@ $this->title = 'My Yii Application';
 <?php
 Modal::begin([
   'title'=>'<h4>Add</h4>',
-  'id'=>'popup',
+  'id'=>'ken',
   'size'=>'modal-lg'
   ]);
-echo "<div id='popupContent'></div>";
+echo "<div id='kenContent'></div>";
 Modal::end();
 ?>

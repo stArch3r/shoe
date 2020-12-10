@@ -4,12 +4,12 @@ namespace frontend\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use frontend\models\Cart;
+use frontend\models\Email;
 
 /**
- * CartSearch represents the model behind the search form of `frontend\models\Cart`.
+ * EmailSearch represents the model behind the search form of `frontend\models\Email`.
  */
-class CartSearch extends Cart
+class EmailSearch extends Email
 {
     /**
      * {@inheritdoc}
@@ -17,7 +17,8 @@ class CartSearch extends Cart
     public function rules()
     {
         return [
-            [['cartId', 'shoeId'], 'integer'],
+            [['id'], 'integer'],
+            [['reciverName', 'email', 'subject', 'content', 'attachment'], 'safe'],
         ];
     }
 
@@ -39,7 +40,7 @@ class CartSearch extends Cart
      */
     public function search($params)
     {
-        $query = Cart::find();
+        $query = Email::find();
 
         // add conditions that should always apply here
 
@@ -57,9 +58,14 @@ class CartSearch extends Cart
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'cartId' => $this->cartId,
-            'shoeId' => $this->shoeId,
+            'id' => $this->id,
         ]);
+
+        $query->andFilterWhere(['like', 'reciverName', $this->reciverName])
+            ->andFilterWhere(['like', 'email', $this->email])
+            ->andFilterWhere(['like', 'subject', $this->subject])
+            ->andFilterWhere(['like', 'content', $this->content])
+            ->andFilterWhere(['like', 'attachment', $this->attachment]);
 
         return $dataProvider;
     }

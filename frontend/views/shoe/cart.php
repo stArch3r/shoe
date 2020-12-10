@@ -3,6 +3,9 @@ use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use frontend\models\Products;
 use frontend\models\Cart;
+/* @var $this yii\web\View */
+/* @var $model frontend\models\Cart */
+
 
 $products = ArrayHelper::map(cart::find()->all(), 'quantity', 'totalPrice');
 $val=Products::find()->where(['status'=>1])->all();
@@ -62,7 +65,9 @@ $this->title = 'My Yii Application';
                               </div>
                               
                               <div class="col-2 col-sm-2 col-md-2 text-right">
+                               
                                   <button type="button" class="btn btn-outline-danger btn-xs">
+                                  
                                       <i class="fa fa-trash" id="sub" aria-hidden="true"></i>
                                   </button>
                               </div>

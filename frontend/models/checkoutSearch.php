@@ -4,12 +4,12 @@ namespace frontend\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use frontend\models\Cart;
+use frontend\models\Checkout;
 
 /**
- * CartSearch represents the model behind the search form of `frontend\models\Cart`.
+ * CheckoutSearch represents the model behind the search form of `frontend\models\Checkout`.
  */
-class CartSearch extends Cart
+class CheckoutSearch extends Checkout
 {
     /**
      * {@inheritdoc}
@@ -17,7 +17,8 @@ class CartSearch extends Cart
     public function rules()
     {
         return [
-            [['cartId', 'shoeId'], 'integer'],
+            [['productId', 'userId'], 'integer'],
+            [['email', 'location'], 'safe'],
         ];
     }
 
@@ -39,7 +40,7 @@ class CartSearch extends Cart
      */
     public function search($params)
     {
-        $query = Cart::find();
+        $query = Checkout::find();
 
         // add conditions that should always apply here
 
@@ -57,9 +58,12 @@ class CartSearch extends Cart
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'cartId' => $this->cartId,
-            'shoeId' => $this->shoeId,
+            'productId' => $this->productId,
+            'userId' => $this->userId,
         ]);
+
+        $query->andFilterWhere(['like', 'email', $this->email])
+            ->andFilterWhere(['like', 'location', $this->location]);
 
         return $dataProvider;
     }

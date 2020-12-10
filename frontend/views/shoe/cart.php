@@ -51,7 +51,7 @@ $this->title = 'My Yii Application';
                       <?php foreach($lists as $cart)  { ?>
     
                           <div class="col-12 col-sm-12 col-md-2 text-center ">
-                                  <img class="img-responsive" src="../uploads<?=$cart->shoe->image?>"     alt="prewiew" width="120" height="80">
+                                  <img class="img-responsive" src="../uploads/<?=$cart->shoe->image?>"     alt="prewiew" width="120" height="80">
                           </div>
                           <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
                               <h4 class="product-name"><strong><?= $cart->shoe->name?></strong></h4>

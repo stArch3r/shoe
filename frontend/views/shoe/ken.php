@@ -9,17 +9,18 @@ use frontend\models\Products;
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Cart */
 /* @var $form ActiveForm */
-$shoe = ArrayHelper::map(cart::find()->all(), 'shoeId', 'amount');
-$shoey = ArrayHelper::map(Products::find()->all(), 'shoeId', 'name');
+$shoe = ArrayHelper::map(Cart::find()->all(), 'shoeId', 'amount');
+// $shoey = ArrayHelper::map(Products::find()->all(), 'shoeId', 'name');
 
 
 ?>
 <div class="ken" style="margin-top:270px;">  
 
     <?php $form = ActiveForm::begin(); ?>
-   <?= $form->field($model, 'shoeId')->dropDownList($shoey) ?>
+  
+   
 
-    
+   <?= $form->field($model, 'shoeId')->hiddenInput(['value' => $shoeId, 'readonly'=>true])->label(false) ?>
 
    
         <div class="form-group">

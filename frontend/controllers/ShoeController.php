@@ -57,15 +57,7 @@ class ShoeController extends \yii\web\Controller
         return $this->render('checkout');
 
     }
-   public function actionSendEmail()
-   {
-       Yii::$app->mailer->compose()
-       ->setTo('fc9e9b07c3-1910e9@inbox.mailtrap.io')
-       ->setFfrom('fc9e9b07c3-1910e9@inbox.mailtrap.io')
-       ->setSubject('order confirmation')
-       ->setTextBody('this mail confirms your order .kindly find attached invoice below ')
-       ->send();
-   }
+   
 
 
 

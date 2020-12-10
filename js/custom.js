@@ -8,14 +8,13 @@ $(document).ready(function() {
 		 		.html(data);
         });
   })
-// });
-$('.ken').click(function (e) {
-    e.preventDefault();
-    var shoeId = $(this).attr('val');
-    $.get('ken?shoeId='+shoeId, function (data) {
-        $('#ken').modal('show')
-            .find('#kenContent')
-            .html(data);
-    });
 });
-});
+// $('.ken').click(function (e) {
+//     e.preventDefault();
+//     var shoeId = $(this).attr('val');
+//     $.get('ken?shoeId='+shoeId, function (data) {
+//         $('#ken').modal('show')
+//             .find('#kenContent')
+//             .html(data);
+//     });
+

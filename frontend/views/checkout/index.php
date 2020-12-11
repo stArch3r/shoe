@@ -28,6 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'productId',
             'userId',
+            'name',
             'email:email',
             'location',
 

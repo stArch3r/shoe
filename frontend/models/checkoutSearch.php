@@ -18,7 +18,7 @@ class CheckoutSearch extends Checkout
     {
         return [
             [['productId', 'userId'], 'integer'],
-            [['email', 'location'], 'safe'],
+            [['name', 'email', 'location'], 'safe'],
         ];
     }
 
@@ -62,7 +62,8 @@ class CheckoutSearch extends Checkout
             'userId' => $this->userId,
         ]);
 
-        $query->andFilterWhere(['like', 'email', $this->email])
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'email', $this->email])
             ->andFilterWhere(['like', 'location', $this->location]);
 
         return $dataProvider;

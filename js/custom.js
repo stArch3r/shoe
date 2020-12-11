@@ -17,4 +17,14 @@ $(document).ready(function() {
 //             .find('#kenContent')
 //             .html(data);
 //     });
+// $('.ken').click(function (e) {
+//     e.preventDefault();
+//     var id = $(this).attr('val');
+//     $.get('ken?id='+id, function (data) {
+//         $('#ken').modal('show')
+//             .find('#kenContent')
+//             .html(data);
+//     });
+// });
+// });
 

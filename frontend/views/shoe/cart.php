@@ -19,17 +19,7 @@ $this->title = 'My Yii Application';
 <div class="site-index">
     <!DOCTYPE html>
 <html>
-    
-<meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-  <script src="https://use.fontawesome.com/c560c025cf.js"></script>
-  <link rel="stylesheet" type="text/css" href="css/cart.css">
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
- 
-  
+
 <head> <title> <h1> my-Duka</h1>
 </title>
 <head>
@@ -48,7 +38,8 @@ $this->title = 'My Yii Application';
               <div class="card-body">
                       <!-- PRODUCT -->
                       <div class="row">
-                      <?php foreach($lists as $cart)  { ?>
+                      <?php  foreach($lists as $cart)  { ?>
+                      
     
                           <div class="col-12 col-sm-12 col-md-2 text-center ">
                                   <img class="img-responsive" src="../uploads/<?=$cart->shoe->image?>"     alt="prewiew" width="120" height="80">
@@ -76,6 +67,7 @@ $this->title = 'My Yii Application';
                 
                     
                       <?php } ?>
+                      
                       <hr>
                       <!-- END PRODUCT -->
                       <!-- PRODUCT -->

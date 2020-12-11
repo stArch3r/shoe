@@ -57,27 +57,15 @@ $this->title = 'My Yii Application';
          <p class="card-text"><?=$product->amount?></p>
          <a href="<?= Url::to(['shoe/ken', 'shoeId'=>$product->id,'totalPrice'=>$product->amount])?>" class="btn btn-primary ken" role="button">Add to Cart</a>
         
-         </div>
+
         
+         </div>
+        <div>
+        </div>
+        </div>
+        </div>
       
        <?php } ?>
-  
-
-
-
-  </div>
-  </div>
-     </div>
-</div>
-</div>
-  </div>
-        
-    </div>
-  </div>
-  </div>
-  </div>
-  </div>
-  </div>
   </div>
   <?php $this->endBody() ?>
 </body>

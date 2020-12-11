@@ -9,6 +9,7 @@ use Yii;
  *
  * @property int $productId
  * @property int $userId
+ * @property string $name
  * @property string $email
  * @property string $location
  *
@@ -30,8 +31,9 @@ class Checkout extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['userId', 'email', 'location'], 'required'],
+            [['userId', 'name', 'email', 'location'], 'required'],
             [['userId'], 'integer'],
+            [['name'], 'string', 'max' => 200],
             [['email'], 'string', 'max' => 255],
             [['location'], 'string', 'max' => 225],
             [['userId'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['userId' => 'id']],
@@ -46,6 +48,7 @@ class Checkout extends \yii\db\ActiveRecord
         return [
             'productId' => 'Product ID',
             'userId' => 'User ID',
+            'name' => 'Name',
             'email' => 'Email',
             'location' => 'Location',
         ];

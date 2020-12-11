@@ -5,9 +5,9 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Checkout */
 
-$this->title = 'Update Checkout: ' . $model->productId;
+$this->title = 'Update Checkout: ' . $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Checkouts', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->productId, 'url' => ['view', 'id' => $model->productId]];
+$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->productId]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="checkout-update">

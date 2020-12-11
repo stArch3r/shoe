@@ -93,7 +93,7 @@ public function actionKen($shoeId)
     return $this->redirect(['shoe/cart']);
     }
 
-    return $this->renderAjax('ken', [
+    return $this->render('ken', [
         'model' => $model,
         'shoeId'=> $shoeId,
         

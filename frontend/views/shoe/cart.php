@@ -1,17 +1,20 @@
 <?php
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
-use frontend\models\Products;
-use frontend\models\Cart;
+use frontend\models\Product;
+use frontend\models\Cartitems;
+use frontend\models\Deposit;
+use frontend\models\Productimages;
+use yii\helpers\StringHelper;
+use frontend\models\Productcart;
+use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Cart */
+$cart= Cartitems::find()->joinWith('cart')->where(['userId'=>Yii::$app->user->id])->joinWith('product')->joinWith('productimages')->all();
 
-
-$products = ArrayHelper::map(cart::find()->all(), 'quantity', 'totalPrice');
-$ken=Products::find()->where(['status'=>1])->all();
-$cartTotal=Cart::find()->asArray()->all();
-$malindi=Cart::find()->JoinWith('shoe')->sum('amount');
-$lists=Cart::find()->joinWith('shoe')->all();
+$cartPrice = Product::find()->sum('basePrice');
+$malindi=Cartitems::find()->JoinWith('product')->sum('baseprice');
+$cart= Cartitems::find()->joinWith('cart')->where(['userId'=>Yii::$app->user->id])->joinWith('product')->joinWith('productimages')->all();
 /* @var $this yii\web\View */
 
 $this->title = 'My Yii Application';
@@ -38,21 +41,21 @@ $this->title = 'My Yii Application';
               <div class="card-body">
                       <!-- PRODUCT -->
                       <div class="row">
-                      <?php  foreach($lists as $cart)  { ?>
+                      <?php  foreach($cart as $product)  { ?>
                       
     
                           <div class="col-12 col-sm-12 col-md-2 text-center ">
-                                  <img class="img-responsive" src="../uploads/<?=$cart->shoe->image?>"     alt="prewiew" width="120" height="80">
+                                  <!-- <img class="img-responsive" src="../uploads/"     alt="prewiew" width="120" height="80"> -->
                           </div>
                           <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
-                              <h4 class="product-name"><strong><?= $cart->shoe->name?></strong></h4>
+                              <h4 class="product-name"><strong><?= $product->product->productName?></strong></h4>
                               <h4>
-                                  <small><?= $cart->shoe->description?></small>
+                                  <small><?= $product->product->productDesc?></small>
                               </h4>
                           </div>
                           <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row item-detail">
                               <div class="col-3 col-sm-3 col-md-6 text-md-right prices" style="padding-top: 5px" >
-                                  <h6><strong id="product"><?=$cart->shoe->amount?>  <span class="text-muted">x</span></strong></h6>
+                                  <h6><strong id="product"><?=$product->product->basePrice ?><<span class="text-muted">x</span></strong></h6>
                               </div>
                               
                               <div class="col-2 col-sm-2 col-md-2 text-right">
@@ -82,9 +85,17 @@ $this->title = 'My Yii Application';
               </div>
               <div class="card-footer">      
                   <div class="pull-right" style="margin: 10px">
-                      <a href="http://localhost/shoe/shoe/checkout" class="btn btn-success pull-right">Checkout</a>
+                      <!-- <a href="http://localhost/shoe/shoe/checkout" class="btn btn-success pull-right">Checkout</a>  -->
+                      <select id="total<?$product->productId?>" class="form-control form-control-sm" style="width:70px;">
+                            <option><?=$cartPrice?> </option>
+                            <option> 2 </option>
+                            <option> 3 </option>
+                        </select>
+                        <a href="<?=Url::to(['/shoe/checkout'])?>" baseUrl="<?= Yii::$app->request->baseUrl?>" productId="?=$product->productId?>" userId="<?= Yii::$app->user->id?>" class="btn btn-lg btn-outline-primary text-uppercase addtoorder"> <i class="fas fa-shopping-cart"></i> Checkout </a>
+
+                        
                       <div class="pull-right" style="margin: 5px">
-                          Total price:<b><?= $malindi?></b>
+                      <h5>Total: Ksh<?=$malindi?>
                       </div>
                   </div>
               </div>

@@ -2,13 +2,13 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\bootstrap4;
-use frontend\models\Products;
-use frontend\models\Cart;
+use frontend\models\Product;
+use frontend\models\Cartitems;
 
 
 
-$cartPrice = Products::find()->sum('amount');
-$malindi=Cart::find()->JoinWith('shoe')->sum('amount');
+$cartPrice = Product::find()->sum('basePrice');
+$malindi=Cartitems::find()->JoinWith('product')->sum('basePrice');
 /* @var $this yii\web\View */
 
 $this->title = 'My Yii Application';
@@ -30,7 +30,7 @@ $this->title = 'My Yii Application';
           </div> -->
           <div class="col-12">
             
-            <p>Phone Number : +2509090945</p>
+            <p>Phone Number : +254717721694</p>
             <h5>Total: Ksh<?=$malindi?><br>
             <button type="button" class="btn btn-info btn-md mt-3"><a href="http://localhost/shoe/checkout/create"> Proceed</button></a>
           </div>

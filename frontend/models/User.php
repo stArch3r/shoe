@@ -18,7 +18,10 @@ use Yii;
  * @property int $updated_at
  * @property string|null $verification_token
  *
- * @property Cart[] $carts
+ * @property Mpesastkrequests[] $mpesastkrequests
+ * @property Orders[] $orders
+ * @property Payments[] $payments
+ * @property Productcart[] $productcarts
  */
 class User extends \yii\db\ActiveRecord
 {
@@ -66,12 +69,42 @@ class User extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Carts]].
+     * Gets query for [[Mpesastkrequests]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getCarts()
+    public function getMpesastkrequests()
     {
-        return $this->hasMany(Cart::className(), ['userId' => 'id']);
+        return $this->hasMany(Mpesastkrequests::className(), ['userId' => 'id']);
+    }
+
+    /**
+     * Gets query for [[Orders]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getOrders()
+    {
+        return $this->hasMany(Orders::className(), ['userId' => 'id']);
+    }
+
+    /**
+     * Gets query for [[Payments]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPayments()
+    {
+        return $this->hasMany(Payments::className(), ['userId' => 'id']);
+    }
+
+    /**
+     * Gets query for [[Productcarts]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getProductcarts()
+    {
+        return $this->hasMany(Productcart::className(), ['userId' => 'id']);
     }
 }

@@ -1,83 +1,106 @@
+
 <?php
-use yii\helpers\Html;
+/* @var $this yii\web\View */
 use yii\helpers\Url;
-use frontend\models\Cart;
-use frontend\models\Products;
-use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 use yii\bootstrap4\Modal;
-
-
-
-
-$products = Products::find()->where(['category'=>'mens'])->all();
-$shoe=Cart::find()->JoinWith('shoe')->all();
+use yii\helpers\StringHelper;
+use frontend\models\Productimages;
+use frontend\models\Cartitems;
+use frontend\models\Product;
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = 'Product';
+$listings = Productimages::find()->joinWith('product')->all();
+$products = Product::find()->joinWith('productimages')->all();
+//var_dump($products); exit();
+
+$Cartitems= new frontend\models\Cartitems;
 ?>
 
-<?php $this->beginPage() ?>
-
-<?php $this->head() ?>
 
 
-<?php $this->beginBody() ?>
-<body> 
-  <div class="row">
-  <div class="container-fluid">
-    <div class="col" style="margin-top: 150px;">
-    <div class="row">
-    <div class="col-md-12">
-    <div class="card mb-3">
-      <img class="card-img-top" src="../assets/image/Large.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Mens</h5>
-        <p class="card-text">Drawing on decades of alternative heritage, Dr. Martens men's collection provides the comfort, durability and attitude synonymous with our brand. Our men's shoes and boots are never worn the same. Choose from the range below, lace them up and make them your own</p>
-      </div>
-    </div>
-    </div>
-  </div>
-    </div>
-</div>
-</div>
+<?php foreach ($products as $product) {?>
 
-    <div class="row">
-      <div class="container-fluid">
-     <?php foreach($products as $product) { ?>
-    <div class="col-md-12">
-    <div class="col-xs-4">
-      <div class="col-md-4" style="float:left">
 
-        <div class="card mb-2">
-           <img class="card-img-top img-fluid " src="../uploads/<?= $product->image?>"  alt="">
-           
-         </div>
-         <h4 class="card-title"><?=$product->name?>></h4>
-         <p class="card-text"><?=$product->amount?></p>
-         <a href="<?= Url::to(['shoe/ken', 'shoeId'=>$product->id,'totalPrice'=>$product->amount])?>" class="btn btn-primary ken" role="button">Add to Cart</a>
-        
+<div class="card">
+	<div class="row">
+		<aside class="col-sm-5 border-right">
+<article class="gallery-wrap"> 
+<div class="img-big-wrap">
+  <div> <a href="#"><img  style="height:350px; width:auto;"src="<?=yii::$app->request->baseUrl.'/'.$product->productimages[0]->imagePath?>"></a></div>
+</div> <!-- slider-product.// -->
+<div class="img-small-wrap">
+  <div class="item-gallery"> <img  style="height:350px; width:auto;"  src="<?=yii::$app->request->baseUrl.'/'.$product->productimages[0]->imagePath?>"> </div>
+</div> <!-- slider-nav.// -->
+</article> <!-- gallery-wrap .end// -->
+		</aside>
+		<aside class="col-sm-7">
+<article class="card-body p-5">
+	<h3 class="title mb-3"><?=$product->productName ?></h3>
 
-        
-         </div>
-        <div>
-        </div>
-        </div>
-        </div>
-      
-       <?php } ?>
-  </div>
-  <?php $this->endBody() ?>
-</body>
-</html>
-<?php $this->endPage() ?>
+<p class="price-detail-wrap"> 
+	<span class="price h3 text-warning"> 
+		<span class="currency">KES </span><span class="num"><?=$product->basePrice  ?></span>
+	</span> 
 
-<?php
-Modal::begin([
-  'title'=>'<h4>Add</h4>',
-  'id'=>'ken',
-  'size'=>'modal-lg'
-  ]);
-echo "<div id='kenContent'></div>";
-Modal::end();
-?>
+</p> <!-- price-detail-wrap .// -->
+<dl class="item-property">
+  <dt>Description</dt>
+  <dd><p><?=$product->productDesc  ?></p></dd>
+</dl>
+<dl class="param param-feature">
+  <dt>Model#</dt>
+  <dd>12345611</dd>
+</dl>  <!-- item-property-hor .// -->
+<dl class="param param-feature">
+  <dt>Color</dt>
+  <dd>Black and white</dd>
+</dl>  <!-- item-property-hor .// -->
+<dl class="param param-feature">
+  <dt>Delivery</dt>
+  <dd>Nairobi, Kimbo, and Meru</dd>
+</dl>  <!-- item-property-hor .// -->
+
+<hr>
+	<div class="row">
+		<div class="col-sm-5">
+			<dl class="param param-inline">
+			  <dt>Quantity: </dt>
+			  <dd>
+			  	<select id="quantity_<?= $product->productId?>" class="form-control form-control-sm quantity" style="width:70px;">
+			  		<option> 1 </option>
+			  		<option> 2 </option>
+			  		<option> 3 </option>
+			  	</select>
+			  </dd>
+			</dl>  <!-- item-property .// -->
+		</div> <!-- col.// -->
+		<div class="col-sm-7">
+			<dl class="param param-inline">
+				  <dt>Size: </dt>
+				  <dd>
+				  	<label class="form-check form-check-inline">
+					  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+					  <span class="form-check-label">SM</span>
+					</label>
+					<label class="form-check form-check-inline">
+					  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+					  <span class="form-check-label">MD</span>
+					</label>
+					<label class="form-check form-check-inline">
+					  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+					  <span class="form-check-label">XXL</span>
+					</label>
+				  </dd>
+			</dl>  <!-- item-property .// -->
+		</div> <!-- col.// -->
+	</div> <!-- row.// -->
+	<hr>
+	<a href="#" baseUrl="<?= Yii::$app->request->baseUrl?>" productid="<?= $product->productId?>" userid="<?= Yii::$app->user->id?>" class="btn btn-lg btn-outline-primary text-uppercase addtocart"> <i class="fas fa-shopping-cart"></i> Add to cart </a>
+</article> <!-- card-body.// -->
+		</aside> <!-- col.// -->
+	</div> <!-- row.// -->
+</div> <!-- card.// -->
+<?php }?>

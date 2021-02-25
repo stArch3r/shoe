@@ -15,11 +15,14 @@ class AppAsset extends AssetBundle
         
         'css/custom.css',
         'css/cart.css',
-        'checkout.css',
+        'css/checkout.css',
+        'css/bs-stepper.css',
         
     ];
     public $js = [
     'js/custom.js',
+    'js/stepper.js',
+    'js/modal.js',
     
 
     ];

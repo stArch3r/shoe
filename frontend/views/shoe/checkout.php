@@ -1,11 +1,11 @@
 <?php
-use frontend\models\Products;
+use frontend\models\Product;
 use common\models\User;
 use yii\bootstrap4\Modal;
-use frontend\models\Cart;
+use frontend\models\Cartitems;
 
-$cartPrice = Products::find()->sum('amount');
-$malindi=Cart::find()->JoinWith('shoe')->sum('amount');
+$cartPrice = Product::find()->sum('basePrice');
+$malindi=Cartitems::find()->JoinWith('product')->sum('baseprice');
 ?>
 <!DOCTYPE html><html lang="en">
     <head>
@@ -36,7 +36,7 @@ $malindi=Cart::find()->JoinWith('shoe')->sum('amount');
       <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="<?= Yii::$app->user->identity->email ?>">
     </div>
     <div class="form-check">
-    <button class="btn btn-success  mpesa  "> mpesa </button>
+    <button baseUrl=<?=Yii::$app->request->baseUrl?>  class="btn btn-success  deposit  "> </button>
       </div>
     <div class="form-check">
         <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
@@ -92,4 +92,12 @@ Modal::begin([
   ]);
 echo "<div id='mpesaContent'></div>";
 Modal::end();
+?>
+<?php
+     Modal::begin([
+        'id'=>'deposit',
+        'size'=>'modal-lg'
+        ]);
+    echo "<div id='depositContent'></div>";
+    Modal::end();
 ?>

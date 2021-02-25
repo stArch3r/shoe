@@ -2,10 +2,13 @@
 use yii\helpers\Html;
 use frontend\models\Categories;
 use frontend\models\Products;
+use frontend\models\Cart;
 
 /* @var $this yii\web\View */
 
 $products = Products::find()->where(['Category'=>'kids'])->all();
+$shoe=Cart::find()->JoinWith('shoe')->all();
+
 ?>
 
 <?php $this->beginPage() ?>
@@ -50,11 +53,8 @@ $products = Products::find()->where(['Category'=>'kids'])->all();
          </div>
          <h4 class="card-title"><?=$product->name?>></h4>
          <p class="card-text"><?=$product->amount?></p>
-         <?= Html::a('view product', ['/shoe/more']); ?>
-         <form action="<?=Url::to(['/shoe/cart'])?>" method="post">
-         <input name="pid" value="<?=$product->id?>">
-         <button class="btn btn-danger mt-3 add-to-cart"> ADD to</button>
-         </form>
+         <a href="<?= Url::to(['shoe/ken', 'shoeId'=>$product->id,'totalPrice'=>$product->amount])?>" class="btn btn-primary ken" role="button">Add to Cart</a>
+
          </div>
       
        <?php } ?>

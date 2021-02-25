@@ -2,19 +2,19 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use frontend\models\Cart;
+use frontend\models\Cartitems;
 use yii\helpers\ArrayHelper;
-use frontend\models\Products;
+use frontend\models\Product;
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Cart */
 /* @var $form ActiveForm */
-$shoe = ArrayHelper::map(Cart::find()->all(), 'shoeId', 'amount');
+$shoe = ArrayHelper::map(Cartitems::find()->all(), 'productId', 'quanity');
 // $shoey = ArrayHelper::map(Products::find()->all(), 'shoeId', 'name');
 
-$products = Products::find()->where(['category'=>'mens'])->all();
-$shoe=Cart::find()->JoinWith('shoe')->all();
+$products = Product::find()->all();
+$shoe=Cartitems::find()->JoinWith('product')->all();
 
 
 ?>
@@ -24,7 +24,7 @@ $shoe=Cart::find()->JoinWith('shoe')->all();
   
    
 
-   <?= $form->field($model, 'shoeId')->hiddenInput(['value' => $shoeId, 'readonly'=>true])->label(false) ?>
+   <?= $form->field($model, 'productId')->hiddenInput(['value' => $productId, 'readonly'=>true])->label(false) ?>
 
    
         <div class="form-group">
@@ -33,20 +33,21 @@ $shoe=Cart::find()->JoinWith('shoe')->all();
     <?php ActiveForm::end(); ?>
 
 </div><!-- ken -->
+<?php foreach($products as $product) { ?>
 <div class="row">
       <div class="container-fluid">
-     <?php foreach($products as $product) { ?>
+   
     <div class="col-md-12">
     <div class="col-xs-4">
       <div class="col-md-4" style="float:left">
 
         <div class="card mb-2">
-           <img class="card-img-top img-fluid " src="../uploads/<?= $product->image?>"  alt="">
+        <div class="item-gallery"> <img class="img-responsive" style="height:250px; witdth:auto;" src="<?=yii::$app->request->baseUrl.'/'.$product->productimages[0]->imagePath?>">
            
          </div>
-         <h4 class="card-title"><?=$product->name?>></h4>
-         <p class="card-text"><?=$product->amount?></p>
-         <a href="<?= Url::to(['shoe/ken', 'shoeId'=>$product->id,'totalPrice'=>$product->amount])?>" class="btn btn-primary ken" role="button">Add to Cart</a>
+         <h4 class="card-title"><?=$product->productName?>></h4>
+         <p class="card-text"><?=$product->basePrice?></p>
+         <a href="<?= Url::to(['shoe/ken', 'productId'=>$product->productId,'totalPrice'=>$product->basePrice])?>" class="btn btn-primary ken" role="button">Add to Cart</a>
         
 
         
@@ -55,6 +56,8 @@ $shoe=Cart::find()->JoinWith('shoe')->all();
         </div>
         </div>
         </div>
-      
-       <?php } ?>
+      </div>
+      </div>
+     
   </div>
+  <?php } ?>

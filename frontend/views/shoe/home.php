@@ -102,7 +102,7 @@ $this->title = 'My Yii Application';
           </div>
           <h4 class="card-title">Product Name</h4>
           <p class="card-text">Ksh.2000</p>
-          <?= Html::submitButton('Submit', ['class' => 'submit']) ?>ss
+          <?= Html::submitButton('Submit', ['class' => 'submit']) ?>
         </div>
   
        

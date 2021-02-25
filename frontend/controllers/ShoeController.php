@@ -3,7 +3,8 @@
 
 namespace frontend\controllers;
 use Yii;
-use frontend\models\Products;
+use frontend\models\Product;
+use frontend\models\Cartitems;
 
 class ShoeController extends \yii\web\Controller
 {
@@ -34,23 +35,57 @@ class ShoeController extends \yii\web\Controller
     {
         return $this->render('more');
     }
-     public function actionSale()
+     public function actionCart()
      {
-         return $this->render('sale');
+         return $this->render('cart');
      }
-     public function actionCart(){
-        $session = Yii::$app->session;
-        $cart = array();
-        $cart[] = $session['cart'];
-        $check_pid_post = Yii::$app->request->post('pid');
-          if(isset($check_pid_post)){
-              $cart[]= $check_pid_post; //product to cart
-              $session['cart'] = $cart;
-          }
+
+
+    //  public function actionMel()
+    //  {
+    //      $model = new \frontend\models\Cartitems();
      
-        $carts = Products::find()->where(['id'=>$session['cart']])->all();
-        return $this->render('cart',['carts'=>$carts]);
-    }
+    //      if ($model->load(Yii::$app->request->post())) {
+    //          if ($model->validate()) {
+    //              // form inputs are valid, do something here
+    //              return;
+    //          }
+    //      }
+     
+    //      return $this->render('mel', [
+    //          'model' => $model,
+    //      ]);
+    //  }
+
+    //  public function actionCart(){
+    //     $session = Yii::$app->session;
+    //     $cart = array();
+    //     $cart[] = $session['cart'];
+    //     $check_productId_post = Yii::$app->request->post('productId');
+    //       if(isset($check_productId_post)){
+    //           $cart[]= $check_pid_post; //product to cart
+    //           $session['cart'] = $cart;
+    //       }
+     
+    //     $carts = Product::find()->where(['productId'=>$session['cart']])->all();
+    //     return $this->render('cart',['carts'=>$carts]);
+    // }
+
+//     public function actionDeposit()
+// {
+//     $model = new \frontend\models\deposit();
+
+//     if ($model->load(Yii::$app->request->post())) {
+//         if ($model->validate()) {
+//             // form inputs are valid, do something here
+//             return;
+//         }
+//     }
+
+//     return $this->renderAjax('deposit', [
+//         'model' => $model,
+//     ]);
+// }
     
     public function actionCheckout()
     {
@@ -65,9 +100,9 @@ class ShoeController extends \yii\web\Controller
     {
         return $this->render('home');
     }
-    public function actionPopup($shoeId)
+    public function actionPopup($productId)
     {
-        $model = new \frontend\models\Cart();
+        $model = new \frontend\models\Cartitems();
 
         if ($model->load(Yii::$app->request->post())) {
             
@@ -77,15 +112,15 @@ class ShoeController extends \yii\web\Controller
     
         return $this->renderAjax('popup', [
             'model' => $model,
-            'shoeId'=> $shoeId,
+            'productId'=> $productId,
             
         ]);
        
     }
     
-public function actionKen($shoeId)
+public function actionKen($productId)
 {
-    $model = new \frontend\models\Cart();
+    $model = new \frontend\models\Cartitems();
 
     if ($model->load(Yii::$app->request->post())) {
         
@@ -95,7 +130,7 @@ public function actionKen($shoeId)
 
     return $this->render('ken', [
         'model' => $model,
-        'shoeId'=> $shoeId,
+        'productId'=> $productId,
         
     ]);
 }

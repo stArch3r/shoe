@@ -59,9 +59,11 @@ AppAsset::register($this);
         <a class="nav-link" href="http://localhost/shoe/shoe/kids"><h5 font-family: "sans-serif", style="color:#000000; mr-sm-0;">KID'S</h5></a>
       </li>
       </li>
+      <?php if(Yii::$app->User->can('ken')){?>
       <li class="nav-item">
         <a class="nav-link" href="http://localhost/shoe/products"><h5 font-family: "sans-serif", style="color:#000000; mr-sm-0;">ADD</h5></a>
       </li>
+      <?php }?>
 
       <li class="nav-item">
   <a class="nav-link" href="sale.php"> <h5 font-family: "sans-serif", style="color:#FF0000; mr-sm-0;">SALE</h5> </a>
